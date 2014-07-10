@@ -15,6 +15,13 @@ module FakeSQS
 
     end
 
+    get "/host-details" do
+      settings.api.options.fetch(:server).tap do |server|
+        server.host = params['host']
+        server.port = params['port']
+      end
+    end
+
     get "/" do
       200
     end
